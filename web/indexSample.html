@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Vue Sample</title>
+    <script type="text/javascript" src="./js/vue/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            /**
+             *使用Vue构造函数创建一个Vue实例，然后通过Vue实例的el接口实现和HTML元素的挂载
+             * 构造函数Vue需要传入一个选项对象，可包含挂载元素、数据、方法和生命周期钩子等
+             * 构造函数Vue可以通过extend方法实现扩展，从而可以用预定义的选项创建可复用的组件构造函数，但是构建组件的常用方法是使用Vue.component()接口去实现
+             * @type {Vue}
+             */
+            var app = new Vue({
+                el:'#app',
+                data: {},
+                methods: {}
+            });
+            /**
+             * 扩展Vue构造器
+             */
+            var MyComponent = Vue.extend({
+                //扩展选项
+            });
+            var vm = new MyComponent({});
+
+            var app2 = new Vue({
+                el:'#app2',
+                data: {
+                    message:'Hello World!',
+                    sayHello: function(){
+                        console.log(this);
+                    }
+                },
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+    <div id="app2">
+        {{message}}
+        <button v-on:click="sayHello">Click Me</button>
+    </div>
+</body>
+</html>
