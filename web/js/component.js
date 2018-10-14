@@ -4,17 +4,18 @@ $(function () {
      * @type {Vue}
      */
     Vue.component('my-component', {
-        props: ['initCount'],
-        template:'<div>' +
-            '<button v-on:click="handleIncrease">+1</button>' +
-            '<button v-on:click="handleReduce">-1</button>' +
-            '</div>',
+        props: ['value'],
+        template: '<input v-bind:value="value" v-on:input="updateValue"/> ',
         data: function(){
             return {
                 counter : 0
             }
         },
         methods: {
+            handleClick: function(){
+              this.counter++;
+              this.$emit('input', this.counter);
+            },
             handleIncrease: function(){
                 this.counter++;
                 this.$emit('increase', this.counter);
@@ -22,17 +23,20 @@ $(function () {
             handleReduce: function(){
                 this.counter--;
                 this.$emit('reduce', this.counter);
+            },
+            updateValue: function(event){
+                this.$emit('input', event.target.value);
             }
         }
     });
     var app = new Vue({
         el: '#app',
         data : {
-            total: 0
+            total: 2
         },
         methods: {
-            handleGetTotal: function(total){
-                this.total = total;
+            handleReduce: function(){
+                this.total --;
             }
         },
         computed: {
@@ -40,4 +44,5 @@ $(function () {
         }
 
     })
+
 });

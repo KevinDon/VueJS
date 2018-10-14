@@ -11,8 +11,8 @@
 <body>
 <div id="app">
     <p>总数：{{total}}</p>
-    <my-component v-on:increase="handleGetTotal"  v-on:reduce="handleGetTotal"></my-component>
+    <my-component v-model="total"></my-component>
+    <button v-on:click="handleReduce">-1</button>
 </div>
-
 </body>
 </html>

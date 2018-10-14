@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Vue Sample</title>
+    <script type="text/javascript" src="./js/vue/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //创建一个空实例
+            var bus = new Vue();
+            Vue.component('component-a',{
+                template :'<button v-on:click="handlerEvent">传递事件</button>',
+                methods: {
+                    handlerEvent: function(){
+                        bus.$emit('on-message', '来自组件的数据component-a的数据')
+                    }
+                }
+            })
+            var app = new Vue({
+                el: '#app',
+                data:{
+                    message : ''
+                },
+                mounted: function(){
+                    var _this = this;
+                    //在实例化时，监听来自BUS的实例事件
+                    bus.$on('on-message', function(msg){
+                        _this.message = msg
+                    })
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="app">
+    {{message}}
+    <component-a></component-a>
+</div>
+</body>
+</html>
