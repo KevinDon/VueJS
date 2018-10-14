@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Vue Sample</title>
+    <script type="text/javascript" src="./js/vue/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            Vue.component('my-component', {
+                template: '<div>' +
+                        '<slot><p>如果父组件没有插入内容，将默认显示</p></slot>' +
+                    '</div> ',
+                data: function(){
+                    return {
+                        counter : 0
+                    }
+                },
+                methods: {
+                }
+            });
+
+            var app = new Vue({
+                el: '#app',
+                data:{
+                    message : ''
+                },
+                mounted: function(){
+                    var _this = this;
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="app">
+    <my-component>
+        <p>更多内容</p>
+    </my-component>
+</div>
+</body>
+</html>
