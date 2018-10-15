@@ -6,7 +6,7 @@ $(function () {
     var app = new Vue({
         el: '#app',
         data : {
-            value: 2
+            value: 123
         },
         methods: {
 

@@ -11,14 +11,23 @@ $(function(){
             '<button v-on:click="handleUp" v-bind:disabled="currentValue >= max">+</button>' +
             '</div>',
         methods: {
+            /**
+             *减少函数
+             */
             handleDown: function(){
                 if(this.currentValue <= this.min) return;
                 this.currentValue -= 1;
             },
+            /**
+             *增加函数
+             */
             handleUp: function(){
                 if(this.currentValue >= this.max) return;
                 this.currentValue += 1;
             },
+            /**
+             *直接修改input框值
+             */
             handleChange: function (event) {
                 var val = event.target.value.trim();
                 var max = this.max;
@@ -69,6 +78,9 @@ $(function(){
                 this.updateValue(val);
             }
         },
+        /**
+         * 初始化数据
+         */
         mounted: function(){
             this.updateValue(this.value);
         }
