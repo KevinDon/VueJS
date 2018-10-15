@@ -2,10 +2,11 @@ $(function(){
     function isValueNumber(value){
         var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
         return reg.test(value + ' ');
-    }
+    };
+
     Vue.component('input-number', {
         template: '<div class="input-number">' +
-            '<input type="text" v-bind:value="currentValue" v-on:change="handleChange" />' +
+            '<input type="text" v-bind:value="currentValue" v-on:change="handleChange" v-on:keyup.up="handleUp" v-on:keyup.down="handleDown"  />' +
             '<button v-on:click="handleDown" v-bind:disabled="currentValue <= min">-</button>' +
             '<button v-on:click="handleUp" v-bind:disabled="currentValue >= max">+</button>' +
             '</div>',
