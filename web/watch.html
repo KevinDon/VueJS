@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Vue Watch</title>
+    <script type="text/javascript" src="./js/vue/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            //Watch监听数据改变时执行的函数
+            Vue.component('my-child', {
+                props: ['message'],
+                template : '<div>{{message}}</div>'
+            });
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    childrens: {
+                        name: 'Kevin',
+                        age: 20,
+                        sex: '男'
+                    },
+                    tdArray:["1","2"],
+                    lastName:"Don"
+                },
+                watch:{
+                    childrens: {
+                        handler:function(val, oldval){
+                            console.log(val.name)
+                        },
+                        deep:true//对象内部的属性监听，也叫深度监听
+                    },
+                    'childrens.name':function(val, oldval){
+                        console.log(val+"aaa")
+                    },//键路径必须加上引号
+                    lastName:function(val, oldval){
+                        console.log(this.lastName)
+                    }
+                },
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-model:value="childrens.name" />
+    <input type="text" v-model:value="lastName" />
+</div>
+</body>
+</html>
