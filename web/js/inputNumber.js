@@ -12,21 +12,21 @@ $(function(){
             '</div>',
         methods: {
             /**
-             *减少函数
+             * 减少函数
              */
             handleDown: function(){
                 if(this.currentValue <= this.min) return;
                 this.currentValue -= 1;
             },
             /**
-             *增加函数
+             * 增加函数
              */
             handleUp: function(){
                 if(this.currentValue >= this.max) return;
                 this.currentValue += 1;
             },
             /**
-             *直接修改input框值
+             * 直接修改input框值
              */
             handleChange: function (event) {
                 var val = event.target.value.trim();
