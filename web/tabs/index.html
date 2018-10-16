@@ -13,7 +13,7 @@
             var app = new Vue({
                 el: '#app',
                 data: {
-                    activeKey : 1
+                    activeKey : '1'
                 }
             })
         })
@@ -22,7 +22,7 @@
 <body>
 
 <div id="app">
-    <tabs v-model="activeKey">
+    <tabs v-model="activeKey" v-bind:value="activeKey" >
         <pane label="标签一" name="1">
             标签1内容
         </pane>

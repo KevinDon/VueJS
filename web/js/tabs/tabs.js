@@ -50,7 +50,6 @@ Vue.component('tabs', {
                 if(!pane.name) pane.name = index;
                 //设置当前选中的tab索引
                 if(index === 0){
-                    console.log(me.currentValue);
                     if(!me.currentValue){
                         me.currentValue = pane.name || index;
                     }
