@@ -7,8 +7,8 @@ Vue.component('pane', {
         '<div class="pane" v-show="show"><slot></slot></div>',
     data: function(){
         return {
-            show: true,
-        }
+            show: true
+        };
     },
     props : {
         name : {
@@ -20,16 +20,16 @@ Vue.component('pane', {
         }
     },
     methods: {
-        updateNav (){
+        updateNav : function(){
             this.$parent.updateNav();
-        },
+        }
     },
     watch: {
         label : function(){
             this.updateNav();
         }
     },
-    mounted (){
+    mounted : function(){
         this.updateNav();
     }
 });
