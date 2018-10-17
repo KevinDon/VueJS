@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>DropDown</title>
+    <script type="text/javascript" src="../js/vue/vue.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/clickoutside.js"></script>
+    <link rel="stylesheet" href="../css/dropdown.css">
+</head>
+<body>
+
+<div id="app" v-cloak>
+    <div class="main" v-clickoutside="handleClose">
+        <button v-on:click="show = !show">点击显示下拉菜单</button>
+        <div class="dropdown" v-show="show">
+            <p>下拉框内容，点击外面区域就可以关闭</p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

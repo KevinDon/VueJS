@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Focus Sample</title>
+    <script type="text/javascript" src="./js/vue/vue.js"></script>
+    <script type="text/javascript" src="./js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            Vue.directive('focus', {
+                inserted : function(el){
+                    el.focus()
+                }
+            });
+            var app = new Vue({
+                el : '#app',
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" v-focus>
+</div>
+</body>
+</html>
