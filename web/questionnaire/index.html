@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Questionnaire App</title>
+    <script type="text/javascript" src="../js/vue/vue.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/questionnaire/index.js"></script>
+    <script type="text/javascript" src="../js/questionnaire/components.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="pageContainer">
+            <div class="pageOne"  v-show="pageOneShow">
+                <div class="title">
+                    1、请问你的性别是：
+                </div>
+                <div class="content">
+                    <template v-for="item in gender" >
+                        <input v-on:click="checkPass" v-bind:type="item.type" v-bind:value="item.value" name="gender" v-bind:id="item.id"> <label v-bind:for="item.id">{{item.name}}</label>
+                    </template>
+                </div>
+                <div>
+                    <my-button v-bind:value='nopass' v-bind:nopass='nopass' label="下一步" v-on:handle="goToNext"></my-button>
+                </div>
+            </div>
+            <div class="pageTwo" v-show="pageTwoShow">
+                <div class="title">
+                    2、请选择您的兴趣爱好：
+                </div>
+                <div class="content">
+                    <template v-for="item in gender">
+                    </template>
+                </div>
+            </div>
+            <div class="pageThree" v-show="pageThreeShow">
+                <div class="title">
+                    3、请介绍下自己：
+                </div>
+                <div class="content">
+                    <template v-for="item in gender">
+                    </template>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

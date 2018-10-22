@@ -20,7 +20,7 @@ $(function(){
             checkUserId: function(msg){
                 if(msg !== ""){
                     //this.$http.post('localhost/username?' + msg, function(data){
-                        //console.log(data);
+                     //console.log(data);
                         if(false){
                             this.main[0].error =  false;
                         }else{
