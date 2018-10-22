@@ -2,16 +2,63 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <!-- 1、如果支持Google Chrome Frame：GCF，则使用GCF渲染；2、如果系统安装ie8或以上版本，则使用最高版本ie渲染；3、否则，这个设定可以忽略。 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!-- 对视窗缩放等级进行限制，使其适应移动端屏幕大小 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 添加到主屏幕后全屏显示 -->
+    <meta name="apple-touch-fullscreen" content="yes" />
     <title>Vue Sample</title>
-    <script type="text/javascript" src="../js/vue/vue.js"></script>
     <script type="text/javascript" src="../js/jquery/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../js/mock/mock.js"></script>
+    <script type="text/javascript" src="../js/vue/vue.js"></script>
+    <script type="text/javascript" src="../js/vue/vue-resource.js"></script>
     <script type="text/javascript" src="../js/projectA/projectA.js"></script>
     <script type="text/javascript" src="../js/projectA/index.js"></script>
-
+    <script type="text/javascript" src="../js/swiper/swiper.min.js"></script>
+    <script type="text/javascript" src="../js/mock/mockConfig.js"></script>
+    <link rel="stylesheet" href="../css/swiper/swiper.min.css">
 </head>
 <body>
-    <div id="app">
-
+    <!-- swiper生效的容器 -->
+    <div class="swiper-contanier">
+        <div class="swiper-wrapper">
+            <!-- 具体滑动的页面 -->
+            <div class="swiper-slide">
+                <ul>
+                    <li v-for="(item,index) in main" style="position: relative">
+                        <!-- input输入框-->
+                        <input v-bind:type="item.type" v-model="userInfo[item.name]" class="effect" v-on:blur="check(item.name, index)" v-bind:name="item.name">
+                        <label for="">
+                            <span>{{item.info}}</span>
+                        </label>
+                        <label>
+                            <span v-show="item.error == 'normal'">{{item.info}}</span>
+                            <span style="color: red; " v-show="item.error == true">{{item.errorInfo}}</span>
+                            <span  v-show="item.error == false">{{item.info}}√</span>
+                        </label>
+                        <span class="focus-border cube"></span>
+                    </li>
+                </ul>
+                <a href="#"><button v-on:click="submitReg">下一步</button></a>
+            </div>
+            <div class="swiper-slide">2</div>
+            <div class="swiper-slide">3</div>
+            <div class="swiper-slide">4</div>
+        </div>
     </div>
+    <!-- 进度条 -->
+    <div class="swiper-pagination"></div>
 </body>
+
 </html>
+
+<script type="text/javascript">
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationType: 'progress',
+        noSwipingClass: 'swiper-no-swiping',
+        allowSwipeToNext: true,
+        allowSwipeToPrev: true,
+    });
+</script>
