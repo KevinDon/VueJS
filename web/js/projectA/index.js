@@ -6,7 +6,9 @@ $(function(){
             show: false
         },
         methods: {
-
+            change: function(){
+                
+            }
         },
         mounted: function(){
 
