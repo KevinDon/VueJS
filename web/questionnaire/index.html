@@ -11,34 +11,37 @@
 <body>
     <div id="app">
         <div class="pageContainer">
-            <div class="pageOne"  v-show="pageOneShow">
+            <div class="pageOne"  v-show="page[0].show">
                 <div class="title">
                     1、请问你的性别是：
                 </div>
-                <div class="content">
+                <my-form-content>
                     <template v-for="item in gender" >
                         <input v-on:click="checkPass" v-bind:type="item.type" v-bind:value="item.value" name="gender" v-bind:id="item.id"> <label v-bind:for="item.id">{{item.name}}</label>
                     </template>
-                </div>
+                </my-form-content>
                 <div>
-                    <my-button v-bind:value='nopass' v-bind:nopass='nopass' label="下一步" v-on:handle="goToNext"></my-button>
+                    <my-button v-bind:value='nopass' v-bind:nopass='nopass' label="下一步" v-on:handle="goToNext" curpage=0 ></my-button>
                 </div>
             </div>
-            <div class="pageTwo" v-show="pageTwoShow">
+            <div class="pageTwo" v-show="page[1].show">
                 <div class="title">
                     2、请选择您的兴趣爱好：
                 </div>
-                <div class="content">
-                    <template v-for="item in gender">
+                <my-form-content>
+                    <template v-for="item in hobbies" >
+                        <input v-on:click="checkPass" v-bind:type="item.type" v-bind:value="item.value" name="gender" v-bind:id="item.id"> <label v-bind:for="item.id">{{item.name}}</label>
                     </template>
-                </div>
+                </my-form-content>
+                <my-button label="上一步" v-on:handle="goToPre" curpage=1 ></my-button>
+                <my-button v-bind:value='nopass' v-bind:nopass='nopass' label="下一步" v-on:handle="goToNext" curpage=1 ></my-button>
             </div>
-            <div class="pageThree" v-show="pageThreeShow">
+            <div class="pageThree" v-show="page[2].show">
                 <div class="title">
                     3、请介绍下自己：
                 </div>
                 <div class="content">
-                    <template v-for="item in gender">
+                    <template>
                     </template>
                 </div>
             </div>
